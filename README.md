@@ -5,7 +5,7 @@
 
 ## 🌐 Live Demo
 The project is live and can be accessed here:  
-👉 **[Essay2Dating – Live Project](https://sanidhya2506.github.io/ESSAY2DATING/create.html)**
+👉 **[Essay2Dating – Live Project](https://sanidhya2506.github.io/ESSAY2DATING/index.html)**
 
 > **Note:** This is a serverless MVP using Google Sheets as a Headless CMS and Google Forms for data collection.
 
