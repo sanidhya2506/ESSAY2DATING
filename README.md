@@ -3,6 +3,15 @@
 
 ---
 
+## 🌐 Live Demo
+
+The project is live and can be accessed here:  
+👉 **[Essay2Dating – Live Project](https://YOUR-LIVE-LINK-HERE)**
+
+> Note: This is a frontend-only MVP using Google Forms for data collection.
+
+---
+
 ## 🧠 What is Essay2Dating?
 
 **Essay2Dating** is a minimalist dating platform concept designed to help people connect through **words, values, and trust** rather than photos and superficial profiles.
@@ -40,7 +49,7 @@ Essay2Dating consists of **four core pages**, forming a complete MVP flow:
 
 ---
 
-### 📝 Join / Read (`create.html`)
+### 📝 Join (`create.html`)
 - Users write an honest essay about themselves
 - Essays are submitted via **Google Forms**
 - This acts as the “profile creation” step
@@ -54,7 +63,7 @@ Essay2Dating consists of **four core pages**, forming a complete MVP flow:
 
 ---
 
-### 👀 View (`view.html`)
+### 👀 Read (`profile.html`)
 - Users read essays and references submitted by others
 - No swiping — only reading and reflection
 - If a user feels a connection, they can send a **connection request**
