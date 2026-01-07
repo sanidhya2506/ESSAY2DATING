@@ -73,6 +73,7 @@ Essay2Dating/
 ├── profile.html     # The Reading Room (The Feed)
 ├── README.md        # Documentation
 └── LICENSE          # MIT License
+```
 ---
 
 ## 🚀 Why This Project Matters
