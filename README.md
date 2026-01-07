@@ -1,139 +1,78 @@
-# Essay2Dating 💌  
-*Fall in love with a story, not a profile.*
+# 📄 Essay2Dating 
+### *Fall in love with a story, not a profile.*
 
 ---
 
 ## 🌐 Live Demo
-
 The project is live and can be accessed here:  
-👉 **[Essay2Dating – Live Project](https://YOUR-LIVE-LINK-HERE)**
+👉 **[Essay2Dating – Live Project](https://YOUR-USERNAME.github.io/essay2dating)**
 
-> Note: This is a frontend-only MVP using Google Forms for data collection.
+> **Note:** This is a serverless MVP using Google Sheets as a Headless CMS and Google Forms for data collection.
 
 ---
 
 ## 🧠 What is Essay2Dating?
+**Essay2Dating** is a minimalist, text-first dating experiment designed to solve "swipe fatigue." In a world of filtered photos and 150-character bios, we return to the depth of long-form prose. Here, connections are built on the architecture of a person's mind, not the pixels of their profile picture.
 
-**Essay2Dating** is a minimalist dating platform concept designed to help people connect through **words, values, and trust** rather than photos and superficial profiles.
-
-Instead of swiping, users:
-- Write honest essays about themselves
-- Ask friends, colleagues, or trusted people to vouch for them
-- Read other people’s stories
-- Send connection requests only when they genuinely feel aligned
-
-The platform encourages **slow dating**, reflection, and meaningful connections.
+The platform encourages **slow dating**, self-reflection, and intentionality.
 
 ---
 
 ## ✨ Core Philosophy
-
-> Modern dating apps prioritize appearance.  
-> Essay2Dating prioritizes understanding.
-
-- No swipes  
-- No filters  
-- No profile pictures  
-- Just stories, references, and intent
+* **No Swipes:** We prioritize reading over scrolling.
+* **No Filters:** Character is the only metric that matters.
+* **No Photos:** Fall in love with a story, not a profile.
+* **Vouched for:** Credibility through the eyes of friends.
 
 ---
 
-## 📄 Pages & Flow
+## 📄 The Workflow
+The project consists of four interconnected pages that form a complete user journey:
 
-Essay2Dating consists of **four core pages**, forming a complete MVP flow:
+### 1. 🏠 Home (`index.html`)
+The gateway. It introduces the "Slow Dating" manifesto and directs users to either join the movement or browse the archives.
 
-### 🏠 Home (`index.html`)
-- Introduces the idea and philosophy
-- Explains why Essay2Dating exists
-- Entry point to join, vouch, or browse
+### 2. 📝 Join (`create.html`)
+Users submit a 300+ word essay about their thoughts, flaws, and obsessions. Data is captured via **Google Forms**, ensuring a secure and structured submission process.
 
----
+### 3. 🤝 Vouch (`reference.html`)
+Social proof is mandatory. Friends or colleagues submit a "vouch" for the user, adding a layer of trust and third-party perspective that self-descriptions often lack.
 
-### 📝 Join (`create.html`)
-- Users write an honest essay about themselves
-- Essays are submitted via **Google Forms**
-- This acts as the “profile creation” step
-
----
-
-### 🤝 Vouch (`reference.html`)
-- Friends, colleagues, or close contacts submit references
-- Adds credibility and social proof
-- Helps others understand the person beyond self-description
+### 4. 📚 The Reading Room (`profile.html`)
+A dynamic feed that fetches data directly from a **Google Sheet** via the CSV API. It renders essays into an elegant, editorial layout using the **Intersection Observer API** for scroll-animated reveals.
 
 ---
 
-### 👀 Read (`profile.html`)
-- Users read essays and references submitted by others
-- No swiping — only reading and reflection
-- If a user feels a connection, they can send a **connection request**
+## 🛠️ Technical Architecture
+This project demonstrates how to build a fully functional, data-driven web app without a traditional backend (Serverless/No-Code Backend).
 
----
-
-## 🔍 Connection Request System (No Backend)
-
-Essay2Dating intentionally avoids a backend in its MVP stage.
-
-### How requests work:
-- Clicking **“Send Request”** opens a Google Form
-- The interested user submits:
-  - Their name
-  - Their contact information
-  - A short message explaining why they want to connect
-- Requests are collected in Google Sheets
-- Connections are shared **only with consent**
-
-This keeps the system:
-✔ Simple  
-✔ Private  
-✔ Safe  
-✔ Scalable later
-
----
-
-## 🛠 Tech Stack
-
-This project uses a **lightweight, accessible stack**:
-
-- **HTML5** – structure
-- **CSS3** – minimalist black & white aesthetic
-- **JavaScript (Vanilla)** – small interactions
-- **Google Forms** – essay, vouch, and request submissions
-- **Google Sheets** – acts as a no-backend database
-- **GitHub Pages / Netlify** – deployment
-
-No backend. No authentication. No frameworks.
+* **Frontend:** HTML5, CSS3 (Custom Minimalist UI), Vanilla JavaScript.
+* **Database (Headless CMS):** Google Sheets API.
+* **Data Collection:** Google Forms (Embedded via Iframes).
+* **Deployment:** GitHub Pages.
+* **Interactions:** * **CSV-to-JSON Parsing:** Custom JS to fetch and display sheet data.
+    * **Mobile Navigation:** Responsive "Hamburger" menu for mobile users.
+    * **Connection System:** Mailto-integration for direct, consent-based connection requests.
 
 ---
 
 ## 🎨 Design Principles
-
-- Minimalist & distraction-free
-- Content-first layout
-- Calm, mature tone
-- Black & white aesthetic
-- Fully responsive
-- Focus on reading, not scrolling endlessly
-
-Every design choice supports **clarity and trust**.
+* **Editorial Aesthetic:** High-contrast typography and generous white space.
+* **Content-First:** No distracting UI elements; the text is the hero.
+* **Fully Responsive:** Designed to feel like a digital book on mobile devices.
 
 ---
 
 ## 📦 Project Structure
-
+```text
 Essay2Dating/
 │
-├── index.html # Home page
-├── create.html # Join / Essay submission
-├── reference.html # Friend reference (vouch)
-├── view.html # Browse essays & send requests
-│
-├── assets/
-│ └── logo.png # Project logo
-│
-└── README.md
-
-
+├── index.html       # Landing Page & Manifesto
+├── create.html      # Profile Creation (The Essay)
+├── reference.html   # Social Proof (The Vouch)
+├── profile.html     # The Reading Room (The Feed)
+├── README.md        # Documentation
+└── LICENSE          # MIT License
 ---
 
 ## 🚀 Why This Project Matters
