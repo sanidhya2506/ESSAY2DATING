@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vouch | Essay2Dating</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --gray: #666666;
+            --light-gray: #f9f9f9;
+            --border: #eeeeee;
+        }
+
+        /* Standard Sticky Footer Setup */
+        html, body {
+            height: 100%;
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo { font-weight: 900; font-size: 1.2rem; text-decoration: none; color: var(--text); letter-spacing: -0.05em; }
+        
+        .nav-links { display: flex; align-items: center; }
+
+        .nav-links a, .nav-links button {
+            text-decoration: none; color: var(--gray); margin-left: 25px;
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em;
+            transition: color 0.2s; background: none; border: none; cursor: pointer; font-weight: 600;
+        }
+        .nav-links a:hover, .nav-links button:hover { color: var(--text); }
+        .active-link { color: var(--text) !important; border-bottom: 2px solid #000; padding-bottom: 5px; }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 1100;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+            }
+            .nav-links.active { display: flex !important; }
+            .nav-links a, .nav-links button {
+                margin: 15px 0;
+                font-size: 1rem;
+                width: 100%;
+                text-align: left;
+                margin-left: 0;
+            }
+        }
+
+        /* Content Wrapper */
+        .page-wrapper { flex: 1 0 auto; }
+        .container { 
+            max-width: 750px; 
+            margin: 60px auto; 
+            padding: 0 25px; 
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: 1s ease; 
+        }
+        
+        header h1 { font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 10px; }
+        .intro-text { color: var(--gray); margin-bottom: 40px; font-size: 1.1rem; }
+
+        .vouch-box {
+            background: var(--light-gray); padding: 30px;
+            border-left: 4px solid #000; border-radius: 0 12px 12px 0; margin-bottom: 50px;
+        }
+        .vouch-box h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+
+        /* Form Styling */
+        .vouch-form { display: flex; flex-direction: column; gap: 40px; }
+        .input-group { display: flex; flex-direction: column; gap: 10px; }
+        .input-group label { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--text); }
+        .input-group p { font-size: 0.85rem; color: var(--gray); margin-top: -5px; }
+        
+        input[type="text"], input[type="email"], textarea {
+            width: 100%; padding: 15px 0; border: none; border-bottom: 1px solid var(--border);
+            font-size: 1.1rem; outline: none; background: transparent; transition: 0.3s;
+        }
+        input:focus, textarea:focus { border-bottom-color: #000; }
+        textarea { min-height: 120px; resize: vertical; line-height: 1.8; }
+
+        .btn-submit {
+            background: #000; color: #fff; padding: 22px 60px; border: none;
+            font-size: 1rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.15em; cursor: pointer; transition: 0.3s; width: 100%;
+            margin-top: 20px; border-radius: 4px;
+        }
+        .btn-submit:hover { background: #333; transform: scale(1.01); }
+
+        footer { 
+            flex-shrink: 0; 
+            padding: 80px 0; 
+            border-top: 1px solid var(--border); 
+            text-align: center; 
+            font-size: 0.85rem; 
+            color: var(--gray); 
+            background: #fff;
+        }
+        footer b { color: #000; }
+        .footer-socials { margin-top: 20px; display: flex; justify-content: center; gap: 20px; font-size: 1.2rem; }
+        .footer-socials a { color: var(--gray); transition: 0.3s; text-decoration: none; }
+        .footer-socials a:hover { color: #000; }
+
+        @media (max-width: 600px) {
+            .input-row { grid-template-columns: 1fr !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">ESSAY2DATING</a>
+        <button class="mobile-menu-btn" id="mobile-toggle"><i class="fa-solid fa-bars"></i></button>
+        <div class="nav-links" id="nav-list">
+            </div>
+    </nav>
+
+    <div class="page-wrapper">
+        <main class="container" id="main-content">
+            <header>
+                <h1>The Voucher.</h1>
+                <p class="intro-text">Character is best understood through the eyes of those who know us. Your reference will be attached to your friend's profile.</p>
+            </header>
+
+            <section class="vouch-box">
+                <h3>Your Responsibility</h3>
+                <p>Tell us a story about your friend's integrity or kindness that an essay alone can't capture. Be specific.</p>
+            </section>
+
+            <div class="vouch-form">
+                <div class="input-group">
+                    <label>Friend's Email Address</label>
+                    <p>We need this to link your vouch to the correct profile.</p>
+                    <input type="email" id="targetEmail" placeholder="Enter the email your friend uses here" required>
+                </div>
+
+                <div class="input-group">
+                    <label>The Character Reference</label>
+                    <p>What makes this person worth knowing?</p>
+                    <textarea id="vouchMessage" placeholder="e.g. I've known them for 5 years and they are the kind of person who..."></textarea>
+                </div>
+
+                <div class="input-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="input-group">
+                        <label>Your Name</label>
+                        <input type="text" id="vouchBy" placeholder="Your Name" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Relationship</label>
+                        <input type="text" id="vouchRel" placeholder="e.g. College Friend / Sister" required>
+                    </div>
+                </div>
+
+                <button id="submitVouchBtn" class="btn-submit">Submit Character Reference</button>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p><b>ESSAY2DATING</b></p>
+        <p>&copy; 2026. Connection through character. Created with ♡ by Sanidhya.</p>
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/sanidhya.does" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/sanidhya-sharma-22ba91237/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/sanidhya2506" target="_blank"><i class="fa-brands fa-github"></i></a>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyB4XAA6lWxC-9-TK5TCYlvpwGSm1jnv3No",
+            authDomain: "essay2dating.firebaseapp.com",
+            projectId: "essay2dating",
+            storageBucket: "essay2dating.firebasestorage.app",
+            messagingSenderId: "643570105958",
+            appId: "1:643570105958:web:1f4609c42610640cf937a7"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        const db = getFirestore();
+
+        // Hamburger Menu Logic
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navList = document.getElementById('nav-list');
+        mobileToggle.onclick = () => navList.classList.toggle('active');
+
+        // Security Check & Nav Builder
+        onAuthStateChanged(auth, (user) => { 
+            if (!user) {
+                window.location.href = "index.html"; 
+            } else {
+                const isPasswordUser = user.providerData.some(p => p.providerId === 'password');
+                if (isPasswordUser && !user.emailVerified) {
+                    window.location.href = "index.html";
+                }
+
+                // Inject Nav Links
+                navList.innerHTML = `
+                    <a href="index.html">Home</a>
+                    <a href="read.html">Read</a>
+                    <a href="write.html">Write</a>
+                    <a href="reference.html" class="active-link">Vouch</a>
+                    <button id="logout-nav-btn" style="color:#ff4444">Logout</button>
+                `;
+
+                document.getElementById('logout-nav-btn').onclick = () => {
+                    signOut(auth).then(() => window.location.href = "index.html");
+                };
+            }
+        });
+
+        // Submit Vouch Logic
+        document.getElementById('submitVouchBtn').onclick = async () => {
+            const btn = document.getElementById('submitVouchBtn');
+            const targetEmail = document.getElementById('targetEmail').value.trim();
+            const message = document.getElementById('vouchMessage').value.trim();
+            const by = document.getElementById('vouchBy').value.trim();
+            const rel = document.getElementById('vouchRel').value.trim();
+
+            if(!targetEmail || !message || !by || !rel) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            const originalText = btn.innerText;
+            btn.innerText = "Saving Reference...";
+            btn.disabled = true;
+
+            try {
+                await addDoc(collection(db, "vouches"), {
+                    friendEmail: targetEmail.toLowerCase(),
+                    vouchText: message,
+                    vouchBy: by,
+                    vouchRel: rel,
+                    submittedBy: auth.currentUser.email,
+                    timestamp: serverTimestamp()
+                });
+                
+                alert("Character reference submitted successfully!");
+                window.location.href = "read.html";
+            } catch (err) {
+                alert("Error: " + err.message);
+                btn.disabled = false;
+                btn.innerText = originalText;
+            }
+        };
+
+        // Entrance Animation
+        window.onload = () => {
+            const content = document.getElementById('main-content');
+            content.style.opacity = "1";
+            content.style.transform = "translateY(0)";
+        };
+    </script>
+</body>
+</html>
