@@ -7,7 +7,7 @@
 The project is live and can be accessed here:  
 👉 **[Essay2Dating – Live Project](https://sanidhya2506.github.io/ESSAY2DATING/index.html)**
 
-> **Note:** This is a serverless MVP using Google Sheets as a Headless CMS and Google Forms for data collection.
+> **Note:** This project has evolved from a Google Sheets MVP to a robust **Firebase Authentication** system for secure, verified user access.
 
 ---
 
@@ -22,44 +22,43 @@ The platform encourages **slow dating**, self-reflection, and intentionality.
 * **No Swipes:** We prioritize reading over scrolling.
 * **No Filters:** Character is the only metric that matters.
 * **No Photos:** Fall in love with a story, not a profile.
-* **Vouched for:** Credibility through the eyes of friends.
+* **Verified Character:** Real-world credibility through the "Vouch" system.
+* **Anti-Ghosting:** High-intent entry barrier ensures meaningful conversations.
 
 ---
 
 ## 📄 The Workflow
-The project consists of four interconnected pages that form a complete user journey:
+The platform features a secure, gated user journey:
 
 ### 1. 🏠 Home (`index.html`)
-The gateway. It introduces the "Slow Dating" manifesto and directs users to either join the movement or browse the archives.
+The gateway. Introduces the "Slow Dating" manifesto. Now features a **Firebase Auth Modal** allowing users to Login via Google or Email/Password.
 
-### 2. 📝 Join (`create.html`)
-Users submit a 300+ word essay about their thoughts, flaws, and obsessions. Data is captured via **Google Forms**, ensuring a secure and structured submission process.
+### 2. 📝 Write (`write.html`)
+Verified members can submit their "Dating Essay." This is where users share their core beliefs, joys, and flaws. Access is restricted to logged-in users only.
 
 ### 3. 🤝 Vouch (`reference.html`)
-Social proof is mandatory. Friends or colleagues submit a "vouch" for the user, adding a layer of trust and third-party perspective that self-descriptions often lack.
+Social proof is mandatory. Friends submit a character reference linked to the user's email. This appears at the bottom of the essay to verify the author's real-world personality.
 
-### 4. 📚 The Reading Room (`profile.html`)
-A dynamic feed that fetches data directly from a **Google Sheet** via the CSV API. It renders essays into an elegant, editorial layout using the **Intersection Observer API** for scroll-animated reveals.
+### 4. 📚 The Reading Room (`read.html`)
+A dynamic gallery of souls. It fetches stories from the database and renders them in an elegant, editorial layout. Users stay anonymous until they choose to accept a connection request.
 
 ---
 
 ## 🛠️ Technical Architecture
-This project demonstrates how to build a fully functional, data-driven web app without a traditional backend (Serverless/No-Code Backend).
+This project is built using a modern **Serverless Architecture** to handle user data and security.
 
-* **Frontend:** HTML5, CSS3 (Custom Minimalist UI), Vanilla JavaScript.
-* **Database (Headless CMS):** Google Sheets API.
-* **Data Collection:** Google Forms (Embedded via Iframes).
+* **Frontend:** HTML5, CSS3 (Custom Minimalist UI), Vanilla JavaScript (ES6+ Modules).
+* **Authentication:** **Firebase Auth** (Google OAuth 2.0 & Email/Password with Verification).
+* **Database:** **Firebase Firestore** (NoSQL) for real-time storage of essays and vouches.
+* **Security:** Email verification gates and protected routes to ensure a high-quality community.
 * **Deployment:** GitHub Pages.
-* **Interactions:** * **CSV-to-JSON Parsing:** Custom JS to fetch and display sheet data.
-    * **Mobile Navigation:** Responsive "Hamburger" menu for mobile users.
-    * **Connection System:** Mailto-integration for direct, consent-based connection requests.
 
 ---
 
 ## 🎨 Design Principles
-* **Editorial Aesthetic:** High-contrast typography and generous white space.
+* **Editorial Aesthetic:** High-contrast typography (System fonts) and generous white space.
 * **Content-First:** No distracting UI elements; the text is the hero.
-* **Fully Responsive:** Designed to feel like a digital book on mobile devices.
+* **Privacy by Design:** No tracking. No public profiles. Contact details are hidden until mutual consent.
 
 ---
 
@@ -67,12 +66,12 @@ This project demonstrates how to build a fully functional, data-driven web app w
 ```text
 Essay2Dating/
 │
-├── index.html       # Landing Page & Manifesto
-├── create.html      # Profile Creation (The Essay)
-├── reference.html   # Social Proof (The Vouch)
-├── profile.html     # The Reading Room (The Feed)
-├── README.md        # Documentation
-└── LICENSE          # MIT License
+├── index.html        # Landing Page & Auth Logic
+├── write.html        # Essay Submission (Protected)
+├── reference.html    # Character Reference Form
+├── read.html         # The Reading Room (Data Feed)
+├── README.md         # Documentation
+└── LICENSE           # MIT License
 ```
 ---
 
