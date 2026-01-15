@@ -10,6 +10,19 @@ The project is live and can be accessed here:
 > **Note:** This project has evolved from a Google Sheets MVP to a robust **Firebase Authentication** system for secure, verified user access.
 
 ---
+## 📄 Research DOI
+
+**Essay2Dating — (HCI Research Artifact)**
+
+🔗 **DOI:** https://doi.org/10.5281/zenodo.18181271  
+
+📚 *This repository represents a research software artifact archived on Zenodo to support transparency, long-term preservation, and scholarly citation.*
+
+### 📖 Citation
+If you use this work, please cite it as:
+> Sanidhya Sharma. *Essay2Dating*. Zenodo. https://doi.org/10.5281/zenodo.18181271
+
+---
 
 ## 🧠 What is Essay2Dating?
 **Essay2Dating** is a minimalist, text-first dating experiment designed to solve "swipe fatigue." In a world of filtered photos and 150-character bios, we return to the depth of long-form prose. Here, connections are built on the architecture of a person's mind, not the pixels of their profile picture.
